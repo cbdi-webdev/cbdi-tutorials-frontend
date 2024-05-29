@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+*{
+     margin: 0;
+     border: 0;
+     box-sizing: border-box;
+}
+
+#root{
+     font-family: "DM Sans", sans-serif;
+}
+
+input{
+     font-family: "DM Sans", sans-serif;
+}
+
+button{
+     font-family: "DM Sans", sans-serif;
+}
+
+input:focus, input:active{
+     outline: none;
+     background-color: #f4f9fd;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

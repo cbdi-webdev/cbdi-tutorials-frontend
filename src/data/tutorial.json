@@ -1,0 +1,34 @@
+{
+     "videos": [
+          {
+               "id": "1",
+               "src": "/videos/khpl_sampl1.mp4",
+               "title": "",
+               "category": "LHMN"
+          },
+          {
+               "id": "2",
+               "src": "/videos/khpl_sampl2.mp4",
+               "title": "",
+               "category": "LHMN"
+          },
+          {
+               "id": "3",
+               "src": "/videos/lhmn_sampl1.mp4",
+               "title": "",
+               "category": "KHPL"
+          },
+          {
+               "id": "4",
+               "src": "/videos/lhmn_sampl2.mp4",
+               "title": "",
+               "category": "KHPL"
+          },
+          {
+               "id": "5",
+               "src": "/videos/shpy_sampl1.mp4",
+               "title": "",
+               "category": "SHPY"
+          }
+     ]
+}
