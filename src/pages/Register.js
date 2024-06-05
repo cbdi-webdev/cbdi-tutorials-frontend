@@ -14,6 +14,7 @@ function Register(){
      const [mobileNumber, setMobileNumber] = useState("");
      const [password1, setPassword1] = useState("");
      const [password2, setPassword2] = useState("");
+     const [financingType, setFinancingType] = useState("");
      const navigate = useNavigate();
 
      const clearInput = () => {
@@ -45,7 +46,8 @@ function Register(){
                          nameSuffix: nameSuffix,
                          email: emailAddress,
                          mobileNo: mobileNumber,
-                         password: password1
+                         password: password1,
+                         financingType: financingType
                     })
                })
                
@@ -156,6 +158,23 @@ function Register(){
                                         />
                                    </div>
                               </div>    
+                         </div>
+                         <div className="financing-type-container">
+                              <label className="user-register-label">Financing Type<span className="asterisk-red">&#42;</span></label>
+                              <div className="financing-type-radio" onChange={ e => setFinancingType(e.target.value) }>
+                                   <div>
+                                        <input type="radio" name="financing-option" id="bank-financing-option" value="bankfinancing" />
+                                        <label htmlFor="bank-financing-option" className="user-register-label">Bank Financing</label>
+                                   </div>
+                                   <div>
+                                        <input type="radio" name="financing-option" id="pagibig-financing-option" value="pagibigfinancing" />
+                                        <label htmlFor="pagibig-financing-option" className="user-register-label">PagIBIG Financing</label>
+                                   </div>
+                                   <div>
+                                        <input type="radio" name="financing-option" id="inhouse-financing-option" value="inhousefinancing" />
+                                        <label htmlFor="inhouse-financing-option" className="user-register-label">Inhouse Financing</label>
+                                   </div>
+                              </div>
                          </div>
                          <div className="user-register-bottom">
                               <button onClick={registerUser} className="user-register-btn" >Create Account</button>

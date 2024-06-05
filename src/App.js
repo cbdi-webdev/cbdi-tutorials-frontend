@@ -17,7 +17,7 @@ function App() {
   const unsetUser = () => {
     localStorage.clear();
   }
-
+  
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/users/details`, {
       headers: {
@@ -29,12 +29,14 @@ function App() {
       if(typeof data._id !== 'undefined'){
         setUser({
           id: data._id,
-          isAdmin: data.isAdmin
+          isAdmin: data.isAdmin,
+          financingType: data.financingType
         })
       } else{
         setUser({
           id: null,
-          isAdmin: null
+          isAdmin: null,
+          financingType: null
         })
       }
     })

@@ -36,7 +36,12 @@ function Login(){
                alert('Successfully Logged In.');
                localStorage.setItem('token', data);
                retrieveUserDetails(data);
-               navigate('/');
+
+               /* setTimeout(function(){
+                    window.location.reload();
+                 }, 1500); */
+
+               navigate('/videos');
           }
      }
      
