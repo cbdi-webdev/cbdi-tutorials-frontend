@@ -1,0 +1,38 @@
+.videos-page-container {
+     margin: 2rem;
+}
+
+.video-wrapper {
+     max-width: 854px;
+     max-height: 480px;
+     margin: auto;
+   }
+
+.react-player {
+     width: 100%;
+     height: 100%;
+
+   }
+
+.video-title{
+     font-size: 26px;
+     max-width: 854px;
+     margin: auto;
+     margin-top: 0.5rem;
+}
+
+.page-indicator{
+     max-width: 854px;
+     margin: auto;
+     margin-bottom: 2rem;
+}
+
+@media(max-width: 500px){
+     .video-title{
+          font-size: 20px;
+     }
+
+     .page-indicator{
+          font-size: 20px;
+     }
+}

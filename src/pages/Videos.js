@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import VideosComponent from '../components/VideosComponent.js';
 import Pagination from '../components/Pagination.js';
+import '../assets/css/partial-css/video.css';
 
 
 
@@ -59,6 +60,7 @@ function Videos(){
      return(
           <div className="videos-page-container">
                <VideosComponent videos={currentVideos} isLoading={isLoading} />
+               <h2 className="page-indicator">({currentPage}/{videos.length})</h2>
                <Pagination 
                videosPerPage={videosPerPage} 
                totalVideos={videos.length} 

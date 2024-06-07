@@ -106,12 +106,12 @@
      padding: 1rem;
      border-radius: 3px;
      border: 2px solid gray;
+     z-index: 88;
 }
 
 .mobile-nav-list-container.open{
      display: flex;
 }
-
 
 
 .nav-list-mobile ul{
