@@ -1,31 +1,17 @@
-import ReactPlayer from 'react-player';
-import UserContext from '../utilities/UserContext.js';
 import { useContext, useState, useEffect } from 'react';
-import Spinner from '../components/Spinner.js';
+import VideosComponent from '../components/VideosComponent.js';
+import Pagination from '../components/Pagination.js';
 
 
 
 function Videos(){
 
-     
-     const { user } = useContext(UserContext);
-     const [ isLoading, setIsLoading ] = useState(false);
-     const [ videos, setVideos ] = useState([]);
+     const [isLoading, setIsLoading] = useState(false);
+     const [videos, setVideos] = useState([]);
      const [currentPage, setCurrentPage] = useState(1);
      const [videosPerPage, setVideosPerPage] = useState(1);
 
 
-     /* useEffect(() => {
-          fetch(`${process.env.REACT_APP_API_URL}/videos`)
-          .then(result => result.json())
-          .then(data => {
-
-               setVideos(data);
-               setIsLoading(false);
-
-          })
-     }, [])
-      */
 
      useEffect(() => {
           const fetchVideos = async () => {
@@ -46,31 +32,41 @@ function Videos(){
           
      }, []);
 
+     // Get Current Videos
+     const indexOfLastVideo = currentPage * videosPerPage;
+     const indexOfFirstVideo = indexOfLastVideo - videosPerPage;
+     const currentVideos = videos.slice(indexOfFirstVideo, indexOfLastVideo)
+
+     // Change Page
+
+     const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
+     // Handle Next and Previous Page Clicks
+
+     const handleNextPage = () => {
+          if(currentPage < Math.ceil(videos.length / videosPerPage)){
+               setCurrentPage(currentPage + 1);
+          }
+     }
+
+     const handlePreviousPage = () => {
+          if(currentPage > 1) {
+               setCurrentPage(currentPage - 1);
+          }
+     }
+
 
      return(
-          <div className="Videos-page-container">
-               {
-                    isLoading ?
-
-                    <Spinner />
-
-                    :
-
-                    <div className="video-content-container">
-                         {
-                              videos.map(video => {
-
-               
-                                   return(
-                                        <div key={video._id}>
-                                             <ReactPlayer  url={video.src} controls />
-                                             <h1>{video.title}</h1>
-                                        </div>
-                                   )
-                              })
-                         }
-                    </div>
-               }
+          <div className="videos-page-container">
+               <VideosComponent videos={currentVideos} isLoading={isLoading} />
+               <Pagination 
+               videosPerPage={videosPerPage} 
+               totalVideos={videos.length} 
+               paginate={paginate} 
+               handleNextPage={handleNextPage}
+               handlePreviousPage={handlePreviousPage}
+               currentPage={currentPage}
+               />
           </div>
      );
 }
