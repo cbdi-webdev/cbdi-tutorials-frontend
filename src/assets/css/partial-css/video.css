@@ -52,6 +52,7 @@
 .playBtnMid{
      width: 36px;
      height: 36px;
+     cursor: pointer;
 }
 
 .controls-bottom{
@@ -63,6 +64,7 @@
      display: flex;
      padding: 0.4rem;
      gap: 0.3rem;
+     background-color: black;
 }
 
 .controls-bottom2 > div{
@@ -72,11 +74,46 @@
      gap: 0.3rem;
 }
 
+.duration-range{
+     height: 8px;
+     border-radius: 0px;
+     transform: translateY(0);
+}
+
+.volume-range{
+     height: 5px;
+} 
+
 
 .bottomBtns{
      width: 24px;
      height: 24px;
 }    
+
+.time-duration{
+     color: #f0f0f0;
+     font-size: 14px;
+}
+
+.time-duration-current{
+     margin-left: 6px;
+}
+
+.controls-bottom2 img{
+     opacity: 85%;
+     transform: scale(0.9);
+     transition: all 0.1s ease-in-out;
+}
+
+.controls-bottom2 img:hover{
+     opacity: 100%;
+     cursor: pointer;
+     transform: scale(1);
+     transition: all 0.1s ease-in-out;
+}
+
+
+
 
 
 @media(max-width: 500px){
