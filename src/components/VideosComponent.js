@@ -6,7 +6,9 @@ import pauseBtn from '../assets/images/pause.png';
 import soundz from '../assets/images/soundz.png';
 import mutez from '../assets/images/muted.png';
 import fullscreen from '../assets/images/fullscreen.png';
-import {useState, useEffect} from 'react';
+import exitfs from '../assets/images/exitfs.png';
+import {useState, useEffect, useRef} from 'react';
+import screenfull from 'screenfull';
 
 
 const VideosComponent = ({videos, isLoading}) => {
@@ -15,21 +17,92 @@ const VideosComponent = ({videos, isLoading}) => {
      const [isPlaying, setIsPlaying] = useState(false);
      const [volume, setVolume] = useState(1);
      const [previousVolume, setPreviousVolume] = useState(1);
+     const [isFullscreen, setIsFullscreen] = useState(false);
+     const [played, setPlayed] = useState(0);
+     const [seekValue, setSeekValue] = useState(0)
+     const playerRef = useRef(null);
+     const [isSeeking, setIsSeeking] = useState(false);
+     const controlsRef = useRef(null);
+     const timeoutRef = useRef(null);
+     const [isVisible, setIsVisible] = useState(true);
      
-
+     
      const handlePlayPause = () => {
           setIsPlaying(!isPlaying);
      }
+     const handleMouseMove = () => {
+          if (!isVisible) {
+            setIsVisible(true);
+          } else {
+            clearTimeout(timeoutRef.current);
+            timeoutRef.current = setTimeout(() => setIsVisible(false), 1000);
+          }
+        };
 
+        useEffect(() => {
+          if(document.querySelector('.video-wrapper'))
+          document.querySelector('.video-wrapper').addEventListener('mousemove', handleMouseMove);
+      
+          return () => document.querySelector('.video-wrapper').removeEventListener('mousemove', handleMouseMove);
+        }, []);
+
+     
      const handleDuration = (newDuration) => {
-          setDuration(newDuration);
-     }
+          // Check if newDuration is a valid number
+          if (typeof newDuration === 'number' && !isNaN(newDuration)) {
+            setDuration(newDuration);
+            
+          } else {
+            console.error('Invalid duration received');
+          }
+        };
+        const handleSeekChange = (event) => {
+          const newPercentage = parseFloat(event.target.value) / 100;
+          const maxSeekValue = Math.min(newPercentage, played); // Limit seekValue to current played position
+          setSeekValue(maxSeekValue);
+        };
 
 
+        const handleSeekMouseDown = () => {
+          setIsSeeking(true); // Set seeking state on mousedown
+        };
+        const handleSeekMouseUp = () => {
+
+          if (seekValue < played){
+               const newTime = seekValue * duration;
+               setPlayed(seekValue); // Update played state after dragging
+               playerRef.current.seekTo(newTime, 'seconds'); // Seek to the new time
+               setIsSeeking(false); // Reset seeking state on mouseup
+          }
+        };
+     /*    const handleSeek = (event) => {
+          const newPercentage = parseFloat(event.target.value) / 100;
+          const newTime = newPercentage * duration;
+          setPlayed(newPercentage);
+          playerRef.current.seekTo(newTime, 'seconds'); // Seek to the new time
+        }; */
+        const handleSeekTouchStart = (event) => {
+          setIsSeeking(true); // Set seeking state on touch start (optional)
+        };
+        
+        const handleSeekTouchEnd = (event) => {
+          const newPercentage = parseFloat(event.target.value) / 100;
+          const newTime = newPercentage * duration;
+          setPlayed(newPercentage); // Update played state after dragging (optional for mobile)
+          playerRef.current.seekTo(newTime, 'seconds'); // Seek to the new time
+          setIsSeeking(false); // Reset seeking state on touch end
+        };
      const handleProgress = (progress) => {
+          console.log(progress)
           if (!progress.played) return; // Skip updates if progress info is unavailable
-          const newCurrentTime = progress.played * duration; // Calculate current time based on duration and played fraction
+
+          const newCurrentTime = progress.played * duration;
           setCurrentTime(newCurrentTime);
+
+          const newPlayed = Math.max(seekValue, progress.played);
+
+          setPlayed(newPlayed);
+          setSeekValue(newPlayed)
         }
 
      const handleVolumeChange = (e) => {
@@ -42,38 +115,54 @@ const VideosComponent = ({videos, isLoading}) => {
             setPreviousVolume(volume);
           }
           setVolume(volume === 0 ? previousVolume : 0); // Toggle volume based on previousVolume
-        };
-
+        }
 
      const formatDuration = (seconds) => {
           const minutes = Math.floor(seconds / 60);
           const remainingSeconds = Math.floor(seconds % 60); // Use Math.floor to round down
           return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`; // Pad seconds with 0
-        };
+        }
 
-     
+        
+     const handleFullscreen = () => {
+          if (screenfull.isEnabled) {
+            const playerContainer = document.querySelector('.video-wrapper');
+            if (screenfull.isFullscreen) {
+              screenfull.exit();
+            } else {
+              screenfull.request(playerContainer);
+            }
+            setIsFullscreen(!isFullscreen)
+          } else {
+            alert('Fullscreen not supported by this browser');
+          }
+     }
+
         useEffect(() => {
           // Reset state variables whenever videos prop changes
           setDuration(0);
           setCurrentTime(0);
           setIsPlaying(false);
           setVolume(1);
+          setPlayed(0);
+          setSeekValue(0);
+
         }, [videos]);
 
 
-     if(isLoading){
+        if(isLoading){
           return <Spinner />
      }
-
      
 
      return(
-          <div className="videos-component-container">
+          <div className="videos-component-container" >
                {
                     videos.map(video => (
                               <div key={video._id}>
-                                   <div className="video-wrapper">
+                                   <div className="video-wrapper" onMouseMove={handleMouseMove}>
                                       <ReactPlayer  
+                                      ref={playerRef}
                                       url={video.src} 
                                       width="100%"
                                       height="100%"
@@ -85,8 +174,12 @@ const VideosComponent = ({videos, isLoading}) => {
                                       muted={volume === 0}
                                       volume={volume}
                                       />
+     {isVisible &&
+                                      <div 
+                                      className="controls-wrapper"
+                                      ref={controlsRef}
 
-                                      <div className="controls-wrapper">
+                                      >
                                         <h2 className="controls-title">{video.title}</h2>
                                         <div className="controls-middle">
                                              <img src={isPlaying ? pauseBtn : playBtn} className="playBtnMid" onClick={handlePlayPause} />
@@ -94,9 +187,15 @@ const VideosComponent = ({videos, isLoading}) => {
                                         <div className="controls-bottom">
                                              <input type="range" 
                                              min={0} 
-                                             max={duration} 
-                                             value={currentTime}
+                                             max={100} 
+                                             value={seekValue * 100}
+                                             onChange={handleSeekChange}
+                                             onMouseUp={handleSeekMouseUp}
+                                             onMouseDown={handleSeekMouseDown}
                                              className="duration-range"
+                                             onTouchStart={handleSeekTouchStart}
+                                             onTouchEnd={handleSeekTouchEnd}
+
                                              />
                                              <div className="controls-bottom2">
                                                   <img src={isPlaying ? pauseBtn : playBtn } className="bottomBtns" onClick={handlePlayPause} />
@@ -116,10 +215,10 @@ const VideosComponent = ({videos, isLoading}) => {
                                                             <span  className="time-duration-total">{formatDuration(duration)}</span>
                                                        </div>
                                                   </div> 
-                                                  <img src={fullscreen} className="bottomBtns" />
+                                                  <img src={isFullscreen ? exitfs : fullscreen} className="bottomBtns" onClick={handleFullscreen} />
                                              </div>
                                         </div>
-                                      </div>
+                                      </div>}
                                    </div>
                                    <h1 className="video-title">{video.title}</h1>
                               </div>

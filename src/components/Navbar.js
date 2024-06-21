@@ -52,10 +52,11 @@ function Navbar(){
                     }
                </div>
           </nav>
+          
           <nav className="mobile-nav">
                <Link to="/">
                     <div className="nav-brand-img-container-mobile">
-                         <img src="./images/asd.png" alt="brandlogo" className="nav-brand-img" />
+                         <img src="/images/asd.png" alt="brandlogo" className="nav-brand-img" />
                     </div>
                </Link>
 
