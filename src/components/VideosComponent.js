@@ -1,9 +1,11 @@
 import ReactPlayer from 'react-player';
 import Spinner from './Spinner.js';
+import Loader from './Loader.js';
 import '../assets/css/partial-css/video.css';
 import playBtn from '../assets/images/play.png';
 import pauseBtn from '../assets/images/pause.png';
 import soundz from '../assets/images/soundz.png';
+import replayz from '../assets/images/replay.png';
 import mutez from '../assets/images/muted.png';
 import fullscreen from '../assets/images/fullscreen.png';
 import exitfs from '../assets/images/exitfs.png';
@@ -25,27 +27,61 @@ const VideosComponent = ({videos, isLoading}) => {
      const controlsRef = useRef(null);
      const timeoutRef = useRef(null);
      const [isVisible, setIsVisible] = useState(true);
+     const [isEnded, setIsEnded] = useState(false);
+     const [isBuffering, setIsBuffering] = useState(false);
      
      
      const handlePlayPause = () => {
           setIsPlaying(!isPlaying);
+          
      }
      const handleMouseMove = () => {
           if (!isVisible) {
             setIsVisible(true);
           } else {
             clearTimeout(timeoutRef.current);
-            timeoutRef.current = setTimeout(() => setIsVisible(false), 1000);
+            timeoutRef.current = setTimeout(() => setIsVisible(false), 3000);
           }
-        };
+        }
+
+      const handleTouchStart = (event) => {
+          if (!isVisible) {
+            setIsVisible(true);
+        } else{
+            setIsVisible(false);
+            event.preventDefault();
+      }
+    }
+  
 
         useEffect(() => {
-          if(document.querySelector('.video-wrapper'))
-          document.querySelector('.video-wrapper').addEventListener('mousemove', handleMouseMove);
-      
-          return () => document.querySelector('.video-wrapper').removeEventListener('mousemove', handleMouseMove);
-        }, []);
+          if(document.querySelector('.video-wrapper')){
+            document.querySelector('.video-wrapper').addEventListener('mousemove', handleMouseMove);
+            document.querySelector('.video-wrapper').addEventListener('touchstart', handleTouchStart);
+          }
 
+          return () => {
+            if(document.querySelector('.video-wrapper')){
+              document.querySelector('.video-wrapper').removeEventListener('mousemove', handleMouseMove);
+              document.querySelector('.video-wrapper').removeEventListener('touchstart', handleTouchStart);
+            } 
+          } 
+        }, []);
+    
+   
+  
+     const handleVideoEnded = () => {
+        setIsPlaying(false);
+        setIsEnded(true);
+
+     }
+
+     const handleStartReplay = () => {
+        playerRef.current.seekTo(0);
+        setSeekValue(0);
+        setIsPlaying(true);
+        setIsEnded(false);
+     }
      
      const handleDuration = (newDuration) => {
           // Check if newDuration is a valid number
@@ -75,12 +111,7 @@ const VideosComponent = ({videos, isLoading}) => {
                setIsSeeking(false); // Reset seeking state on mouseup
           }
         };
-     /*    const handleSeek = (event) => {
-          const newPercentage = parseFloat(event.target.value) / 100;
-          const newTime = newPercentage * duration;
-          setPlayed(newPercentage);
-          playerRef.current.seekTo(newTime, 'seconds'); // Seek to the new time
-        }; */
+
         const handleSeekTouchStart = (event) => {
           setIsSeeking(true); // Set seeking state on touch start (optional)
         };
@@ -146,6 +177,7 @@ const VideosComponent = ({videos, isLoading}) => {
           setVolume(1);
           setPlayed(0);
           setSeekValue(0);
+          setIsEnded(false);
 
         }, [videos]);
 
@@ -173,7 +205,19 @@ const VideosComponent = ({videos, isLoading}) => {
                                       playing={isPlaying}
                                       muted={volume === 0}
                                       volume={volume}
+                                      onEnded={handleVideoEnded}
+                                      onBuffer={() => setIsBuffering(true)}
+                                      onBufferEnd={() => setIsBuffering(false)}
                                       />
+
+                                      { isBuffering && 
+                                      
+                                        <div className="loader-container">
+                                            <Loader />
+                                        </div>
+                                      
+                                      }
+
      {isVisible &&
                                       <div 
                                       className="controls-wrapper"
@@ -182,7 +226,14 @@ const VideosComponent = ({videos, isLoading}) => {
                                       >
                                         <h2 className="controls-title">{video.title}</h2>
                                         <div className="controls-middle">
-                                             <img src={isPlaying ? pauseBtn : playBtn} className="playBtnMid" onClick={handlePlayPause} />
+                                             <img src={
+                                              !isEnded ?
+
+                                              (isPlaying ? pauseBtn : playBtn)
+                                              :
+                                              replayz
+
+                                              } className="playBtnMid" onClick={!isEnded ? handlePlayPause : handleStartReplay} />
                                         </div>
                                         <div className="controls-bottom">
                                              <input type="range" 
@@ -198,7 +249,12 @@ const VideosComponent = ({videos, isLoading}) => {
 
                                              />
                                              <div className="controls-bottom2">
-                                                  <img src={isPlaying ? pauseBtn : playBtn } className="bottomBtns" onClick={handlePlayPause} />
+                                                  <img src={
+                                                    !isEnded ?
+                                                      (isPlaying ? pauseBtn : playBtn )
+                                                    :
+                                                       replayz
+                                                    } className="bottomBtns" onClick={!isEnded ? handlePlayPause : handleStartReplay} />
                                                   <div>
                                                        <img src={volume === 0 ? mutez : soundz} className="bottomBtns" onClick={handleVolumeToggle} />
                                                        <input 
