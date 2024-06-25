@@ -222,7 +222,6 @@ const VideosComponent = ({videos, isLoading}) => {
                                       <div 
                                       className="controls-wrapper"
                                       ref={controlsRef}
-
                                       >
                                         <h2 className="controls-title">{video.title}</h2>
                                         <div className="controls-middle">
@@ -232,7 +231,7 @@ const VideosComponent = ({videos, isLoading}) => {
                                               (isPlaying ? pauseBtn : playBtn)
                                               :
                                               replayz
-
+                                              
                                               } className="playBtnMid" onClick={!isEnded ? handlePlayPause : handleStartReplay} />
                                         </div>
                                         <div className="controls-bottom">

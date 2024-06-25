@@ -2,7 +2,7 @@ import '../assets/css/partial-css/login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import UserContext from '../utilities/UserContext.js';
-
+import AlertContext from '../utilities/AlertContext.js';
 
 
 function Login(){
@@ -11,6 +11,7 @@ function Login(){
      const [password, setPassword] = useState("");
      const navigate = useNavigate();
      const { user, setUser } = useContext(UserContext);
+     const { notifyerror, notifysuccess } = useContext(AlertContext);
 
      async function loginUser(e){
           e.preventDefault();
@@ -31,9 +32,9 @@ function Login(){
           if(!result.ok){
                setPassword("");
                setEmail("");
-               alert(data);
+               notifyerror(data);
           }else {
-               alert('Successfully Logged In.');
+               notifysuccess('Successfully Logged In.');
                localStorage.setItem('token', data);
                retrieveUserDetails(data);
 

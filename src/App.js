@@ -9,6 +9,8 @@ import Logout from './utilities/Logout.js';
 import NonMemberRoutes from './utilities/NonMemberRoutes.js';
 import MemberRoutes from './utilities/MemberRoutes.js';
 import Videos from './pages/Videos.js';
+import { AlertProvider } from './utilities/AlertContext.js';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
 
@@ -63,6 +65,7 @@ function App() {
   return (
     <>
       <UserContext.Provider value={{user, setUser, unsetUser}}>
+        <AlertProvider>
         <Navbar />
         <Routes>
             <Route exact path="/" element={<Home />} />
@@ -77,7 +80,9 @@ function App() {
 
             <Route path="/logout" element={<Logout />} />
         </Routes>
+        </AlertProvider>
       </UserContext.Provider>
+      <ToastContainer /> 
     </>
   );
 }

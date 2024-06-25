@@ -55,6 +55,13 @@
      cursor: pointer;
 }
 
+.controls-title{
+     padding: 0.35rem;
+     font-size: 20px;
+     color: #f0f0f0;
+     font-weight: 500;
+}
+
 .controls-bottom{
      display: flex;
      flex-direction: column;
@@ -124,6 +131,11 @@
 
      .page-indicator{
           font-size: 20px;
+     }
+
+     .controls-title{
+          font-size: 16px;
+ 
      }
 }
 

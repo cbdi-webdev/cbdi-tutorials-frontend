@@ -1,6 +1,8 @@
 import '../assets/css/partial-css/register.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import AlertContext from '../utilities/AlertContext.js';
+
 
 
 
@@ -17,6 +19,8 @@ function Register(){
      const [financingType, setFinancingType] = useState("");
      const navigate = useNavigate();
 
+     const { notifyregister, notifyerror } = useContext(AlertContext);
+
      const clearInput = () => {
           setPassword1("");
           setPassword2("");
@@ -30,7 +34,7 @@ function Register(){
 
                clearInput();
 
-               return alert("Password did not match. Try again");
+               return notifyerror("Password did not match. Try again");
           }
 
           try{
@@ -54,17 +58,17 @@ function Register(){
                const data = await result.json();
 
                if(!result.ok){
-                    alert(data);
+                    notifyerror(data);
                     clearInput();
                } else{
-                    alert("Account created successfully.");
+                    notifyregister("Account created successfully.");
                     navigate('/login');
                }
 
 
           } catch{
                clearInput();
-               alert("Fetching API Error");
+               notifyerror("Fetching API Error");
           }
      }
 
