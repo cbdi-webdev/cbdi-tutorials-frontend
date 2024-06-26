@@ -11,6 +11,7 @@ import MemberRoutes from './utilities/MemberRoutes.js';
 import Videos from './pages/Videos.js';
 import { AlertProvider } from './utilities/AlertContext.js';
 import { ToastContainer } from 'react-toastify';
+import Footer from './components/Footer.js';
 
 function App() {
 
@@ -80,6 +81,7 @@ function App() {
 
             <Route path="/logout" element={<Logout />} />
         </Routes>
+        <Footer />
         </AlertProvider>
       </UserContext.Provider>
       <ToastContainer /> 

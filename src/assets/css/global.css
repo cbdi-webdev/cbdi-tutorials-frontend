@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 *{
      margin: 0;
@@ -7,15 +7,15 @@
 }
 
 #root{
-     font-family: "DM Sans", sans-serif;
+     font-family: "Noto Sans", sans-serif;;
 }
 
 input{
-     font-family: "DM Sans", sans-serif;
+     font-family: "Noto Sans", sans-serif;;
 }
 
 button{
-     font-family: "DM Sans", sans-serif;
+     font-family: "Noto Sans", sans-serif;;
 }
 
 input:focus, input:active{
@@ -34,3 +34,22 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+
+/* footer css*/
+
+.footer-page{
+     background-color: #084632;
+     color: #f0f0f0;
+     width: 100%;
+     padding: 0.3rem 0.7rem;
+}
+
+.footer-page span{
+     font-size: 14px;
+     display: block;
+     text-align: center;
+}
+
+
+/* footer end */

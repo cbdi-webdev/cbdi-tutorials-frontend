@@ -9,12 +9,12 @@
 }
 
 .loader {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   display: block;
-  border-top: 3px solid #F0B61B;
-  border-right: 3px solid transparent;
+  border-top: 4px solid #F0B61B;
+  border-right: 4px solid transparent;
   box-sizing: border-box;
   animation: spin 1s linear infinite;
 }

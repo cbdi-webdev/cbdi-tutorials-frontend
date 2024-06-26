@@ -1,5 +1,6 @@
 .videos-page-container {
      margin: 2rem;
+     min-height: 84.25vh;
 }
 
 .video-wrapper {
@@ -42,12 +43,9 @@
 }
 
 
-
 .controls-middle{
      align-self: center;
 }
-
-
 
 .playBtnMid{
      width: 36px;
@@ -85,13 +83,14 @@
      height: 8px;
      border-radius: 0px;
      transform: translateY(0);
+     accent-color: #258668;
 
 }
 
 .volume-range{
      height: 5px;
+     accent-color: #258668;
 } 
-
 
 .bottomBtns{
      width: 24px;
@@ -122,8 +121,6 @@
 
 
 
-
-
 @media(max-width: 500px){
      .video-title{
           font-size: 20px;
@@ -139,3 +136,8 @@
      }
 }
 
+@media(max-height: 800px){
+     .videos-page-container{
+          min-height: 77vh;
+     }
+}

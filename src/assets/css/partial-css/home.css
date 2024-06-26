@@ -1,0 +1,122 @@
+.home-container{
+     background-color: #F8F9FA;
+     min-height: 90.25vh;
+}
+
+.hero-container{
+     background-image: url('../../images/coverszxc.png');
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position: center;
+     height: 220px;
+     position: relative;
+}
+
+.herologo-img{
+     width: 100%;
+     height: 100%;
+}
+
+.herologo-img-container{
+     position: absolute;
+     max-width: 350px;
+     top: 50%;
+     left: 50%;
+     -ms-transform: translate(-50%, -50%);
+     transform: translate(-50%, -50%);
+     
+}
+
+.home-dashboard{
+     padding: 2rem;
+
+}
+
+.home-dashboard > h1 {
+     text-align: center;
+     color: #084632;
+     font-weight: bolder;
+     text-shadow: 2px 1px #35af889d;
+     font-size: 2.5rem;
+}
+
+.dashboard-list{
+     display: flex;
+     margin: 3rem 0;
+     justify-content: center;
+     align-items: center;
+     gap: 2rem;
+}
+
+
+
+.dashboard-box:hover{
+     cursor: pointer;
+     transform: scale(1.05);
+}
+
+.dashboard-img-container{
+     max-width: 120px;
+     margin: auto;
+}
+.dashboard-img{
+     width: 100%;
+     height: 100%;
+}
+
+.dashboard-box{
+     background-color: #ffffff;
+     min-width: 300px;
+     padding: 1rem;
+     border-radius: 25px;
+     border: 1px solid rgba(0,0,0,.125);
+     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+.dashboard-item > h5{
+     font-size: 1.25rem;
+     margin: 1rem;
+     text-align: center;
+     color: #3a3f3c;
+}
+
+.hero-gradient{
+     position: absolute;
+     background-image: linear-gradient(180deg, rgba(255,255,255, 0), rgba(255,255,255, 1));
+     height: 80px;
+     width: 100%;
+     bottom: 0;
+}
+
+
+@media(max-width: 1000px){
+     .dashboard-list{
+          flex-direction: column;
+     }
+
+     .home-dashboard > h1{
+          font-size: 26px;
+     }
+
+     .dashboard-item > h5{
+          margin: 0.75rem;
+     }
+
+     .herologo-img-container{
+          max-width: 300px;
+     }
+
+}
+
+
+@media(max-height: 1080px){
+     .home-container{
+          min-height: 90.25vh;
+     }
+}
+
+@media(max-height: 768px){
+     .home-container{
+          min-height: 87vh;
+     }
+}

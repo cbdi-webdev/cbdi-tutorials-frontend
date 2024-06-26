@@ -29,11 +29,11 @@ function Navbar(){
                
 
                <div className="nav-list">
-                    <ul>
+                    {/* <ul>
                          <li><Link to="/" className="nav-link">Home</Link></li>
                          <li><Link to="/videos" className="nav-link">Videos</Link></li>
                          <li>About</li>
-                    </ul>
+                    </ul> */}
                </div>
 
 
