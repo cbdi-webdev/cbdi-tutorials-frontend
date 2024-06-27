@@ -63,8 +63,8 @@ function Navbar(){
                <div className={isMobileMenuActive ? "mobile-nav-list-container open" : "mobile-nav-list-container"} >
                     <div className="nav-list-mobile">
                          <ul>
-                              <li><Link to="/" className="nav-link">Home</Link></li>
-                              <li><Link to="/videos" className="nav-link">Videos</Link></li>
+                              <li onClick={handleToggleMenu}><Link to="/" className="nav-link">Home</Link></li>
+                              <li onClick={handleToggleMenu}><Link to="/videos" className="nav-link">Videos</Link></li>
                               <li>About</li>
                          </ul>
                     </div>
@@ -79,12 +79,12 @@ function Navbar(){
                               (user.id !== null)
                               ?
                               <ul>
-                                   <li><Link to="/logout" className="nav-link" >Logout</Link></li>
+                                   <li onClick={handleToggleMenu}><Link to="/logout" className="nav-link" >Logout</Link></li>
                               </ul>
                               :
                               <ul>
-                                   <li><Link to="/login" className="nav-link" >Login</Link></li>
-                                   <li><Link to="/register" className="nav-link" >Register</Link></li>
+                                   <li onClick={handleToggleMenu}><Link to="/login" className="nav-link" >Login</Link></li>
+                                   <li onClick={handleToggleMenu}><Link to="/register" className="nav-link" >Register</Link></li>
                               </ul>
                          }
                     </div>
