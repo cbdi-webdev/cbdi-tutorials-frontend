@@ -12,6 +12,8 @@ import Videos from './pages/Videos.js';
 import { AlertProvider } from './utilities/AlertContext.js';
 import { ToastContainer } from 'react-toastify';
 import Footer from './components/Footer.js';
+import Hero from './components/Hero.js';
+import './assets/css/partial-css/home.css';
 
 function App() {
 
@@ -68,6 +70,7 @@ function App() {
       <UserContext.Provider value={{user, setUser, unsetUser}}>
         <AlertProvider>
         <Navbar />
+        <Hero />
         <Routes>
             <Route exact path="/" element={<Home />} />
             <Route element={<MemberRoutes />}>

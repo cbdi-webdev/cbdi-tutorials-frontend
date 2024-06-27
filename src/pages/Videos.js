@@ -12,8 +12,6 @@ function Videos(){
      const [currentPage, setCurrentPage] = useState(1);
      const [videosPerPage, setVideosPerPage] = useState(1);
 
-
-
      useEffect(() => {
           const fetchVideos = async () => {
                setIsLoading(true);
@@ -26,7 +24,6 @@ function Videos(){
                setVideos(data);
                setIsLoading(false);
                
-               
           }    
 
           fetchVideos();
@@ -37,6 +34,8 @@ function Videos(){
      const indexOfLastVideo = currentPage * videosPerPage;
      const indexOfFirstVideo = indexOfLastVideo - videosPerPage;
      const currentVideos = videos.slice(indexOfFirstVideo, indexOfLastVideo)
+     console.log(videos);
+     console.log(currentVideos);
 
      // Change Page
 
@@ -60,7 +59,6 @@ function Videos(){
      return(
           <div className="videos-page-container">
                <VideosComponent videos={currentVideos} isLoading={isLoading} />
-               <h2 className="page-indicator">({currentPage}/{videos.length})</h2>
                <Pagination 
                videosPerPage={videosPerPage} 
                totalVideos={videos.length} 
@@ -69,6 +67,12 @@ function Videos(){
                handlePreviousPage={handlePreviousPage}
                currentPage={currentPage}
                />
+               <div className="side-panel">
+                    <h5>Video Playlist ({currentPage}/{videos.length})</h5>
+                    <ul className="side-list">
+                         {videos.map(video => <li key={video._id} className={ video.title == currentVideos[0].title ? "side-item active" : "side-item" }>{video.title}</li>)}
+                    </ul>
+               </div>
           </div>
      );
 }

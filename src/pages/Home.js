@@ -9,13 +9,6 @@ import { Link } from 'react-router-dom';
 function Home(){
      return(
           <div className="home-container">
-               <div className="hero-container">
-
-                    <div className="herologo-img-container">
-                         <img src={logo} className="herologo-img-container" />
-                    </div>
-                    <div className="hero-gradient"></div>
-               </div>
                <div className="home-dashboard">
                     <h1>CBDI Video Tutorials for Buyers</h1>
                     <div className="dashboard-list">

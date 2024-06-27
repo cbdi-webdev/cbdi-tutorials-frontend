@@ -111,12 +111,12 @@
 
 @media(max-height: 1080px){
      .home-container{
-          min-height: 90.25vh;
+          min-height: 70.25vh;
      }
 }
 
 @media(max-height: 768px){
      .home-container{
-          min-height: 87vh;
+          min-height: 60vh;
      }
 }
