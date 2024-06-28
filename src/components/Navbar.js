@@ -39,15 +39,18 @@ function Navbar(){
 
                <div className="nav-user-container">
                     {
-                         (user.id !== null)
+                         (user.id === undefined)
                          ?
-                         <ul>
-                              <li><Link to="/logout" className="nav-link" >Logout</Link></li>
-                         </ul>
-                         :
+                         
                          <ul>
                               <li><Link to="/login" className="nav-link" >Login</Link></li>
                               <li><Link to="/register" className="nav-link" >Register</Link></li>
+                         </ul>
+
+                         :
+                         
+                         <ul>
+                              <li><Link to="/logout" className="nav-link" >Logout</Link></li>
                          </ul>
                     }
                </div>
@@ -82,7 +85,7 @@ function Navbar(){
                                    <li onClick={handleToggleMenu}><Link to="/login" className="nav-link" >Login</Link></li>
                                    <li onClick={handleToggleMenu}><Link to="/register" className="nav-link" >Register</Link></li>
                               </ul>
-                              
+
                               :
                               
                               <ul>
