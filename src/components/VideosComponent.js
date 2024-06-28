@@ -43,7 +43,7 @@ const VideosComponent = ({videos, isLoading}) => {
             // Determine device type (consider advanced techniques for accuracy)
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-            const timeoutDuration = isMobile ? 500 : 3000; // 0.5 seconds for mobile, 3 seconds for desktop
+            const timeoutDuration = isMobile ? 500 : 2000; // 0.5 seconds for mobile, 3 seconds for desktop
 
             clearTimeout(timeoutRef.current);
             timeoutRef.current = setTimeout(() => setIsVisible(false), timeoutDuration);
