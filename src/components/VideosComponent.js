@@ -39,31 +39,25 @@ const VideosComponent = ({videos, isLoading}) => {
           if (!isVisible) {
             setIsVisible(true);
           } else {
+
+            // Determine device type (consider advanced techniques for accuracy)
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+            const timeoutDuration = isMobile ? 500 : 3000; // 0.5 seconds for mobile, 3 seconds for desktop
+
             clearTimeout(timeoutRef.current);
-            timeoutRef.current = setTimeout(() => setIsVisible(false), 3000);
+            timeoutRef.current = setTimeout(() => setIsVisible(false), timeoutDuration);
           }
         }
-
-      const handleTouchStart = (event) => {
-          if (!isVisible) {
-            setIsVisible(true);
-        } else{
-            setIsVisible(false);
-            event.preventDefault();
-      }
-    }
   
-
         useEffect(() => {
           if(document.querySelector('.video-wrapper')){
             document.querySelector('.video-wrapper').addEventListener('mousemove', handleMouseMove);
-            document.querySelector('.video-wrapper').addEventListener('touchstart', handleTouchStart);
           }
 
           return () => {
             if(document.querySelector('.video-wrapper')){
               document.querySelector('.video-wrapper').removeEventListener('mousemove', handleMouseMove);
-              document.querySelector('.video-wrapper').removeEventListener('touchstart', handleTouchStart);
             } 
           } 
         }, []);
