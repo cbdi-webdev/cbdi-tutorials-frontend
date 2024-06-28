@@ -39,7 +39,7 @@ function App() {
         })
       } else{
         setUser({
-          id: null,
+          id: undefined,
           isAdmin: null,
           financingType: null
         })
