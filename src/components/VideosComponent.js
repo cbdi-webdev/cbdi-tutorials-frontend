@@ -124,7 +124,7 @@ const VideosComponent = ({videos, isLoading}) => {
           setIsSeeking(false); // Reset seeking state on touch end
         };
      const handleProgress = (progress) => {
-          console.log(progress)
+          /* console.log(progress) */
           if (!progress.played) return; // Skip updates if progress info is unavailable
 
           const newCurrentTime = progress.played * duration;

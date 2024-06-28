@@ -34,8 +34,8 @@ function Videos(){
      const indexOfLastVideo = currentPage * videosPerPage;
      const indexOfFirstVideo = indexOfLastVideo - videosPerPage;
      const currentVideos = videos.slice(indexOfFirstVideo, indexOfLastVideo)
-     console.log(videos);
-     console.log(currentVideos);
+    /*  console.log(videos);
+     console.log(currentVideos); */
 
      // Change Page
 
