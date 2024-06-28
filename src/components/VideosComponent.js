@@ -9,7 +9,7 @@ import replayz from '../assets/images/replay.png';
 import mutez from '../assets/images/muted.png';
 import fullscreen from '../assets/images/fullscreen.png';
 import exitfs from '../assets/images/exitfs.png';
-import {useState, useEffect, useRef} from 'react';
+import { useState, useEffect, useRef } from 'react';
 import screenfull from 'screenfull';
 
 
