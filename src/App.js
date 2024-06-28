@@ -31,7 +31,7 @@ function App() {
     })
     .then(result => result.json())
     .then(data => {
-      if(typeof data._id !== 'undefined'){
+      if(typeof data._id !== "undefined"){
         setUser({
           id: data._id,
           isAdmin: data.isAdmin,
@@ -39,7 +39,7 @@ function App() {
         })
       } else{
         setUser({
-          id: undefined,
+          id: null,
           isAdmin: null,
           financingType: null
         })
