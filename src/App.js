@@ -44,7 +44,6 @@ function App() {
           financingType: null
         })
 
-        localStorage.clear();
       }
     })
   }, []);
