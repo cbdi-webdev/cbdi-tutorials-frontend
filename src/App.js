@@ -43,6 +43,8 @@ function App() {
           isAdmin: null,
           financingType: null
         })
+
+        localStorage.clear();
       }
     })
   }, []);

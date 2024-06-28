@@ -11,7 +11,7 @@ function NonMemberRoutes(){
      const { user } = useContext(UserContext);
 
      return(
-          (user.id !== undefined)
+          (user.id !== null)
           ?
           <Home />
           :

@@ -13,7 +13,7 @@ function MemberRoutes(){
      const { user } = useContext(UserContext);
 
      return(
-          (user.id === undefined)
+          (user.id == null)
           ?
           <Login />
           :
