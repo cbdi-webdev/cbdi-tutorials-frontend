@@ -202,6 +202,7 @@ const VideosComponent = ({videos, isLoading}) => {
                                       onEnded={handleVideoEnded}
                                       onBuffer={() => setIsBuffering(true)}
                                       onBufferEnd={() => setIsBuffering(false)}
+                                      config={ { file: { attributes: { poster: video.posterImg } } } }
                                       />
 
                                       { isBuffering && 
