@@ -17,7 +17,7 @@ function Home(){
                               <div className="dashboard-box">
                                    <Link to="/login">
                                    <div className="dashboard-img-container">
-                                        <img src={accountImg} className="dashboard-img" />
+                                        <img src={accountImg} className="dashboard-img" loading="lazy" />
                                    </div>
                                    </Link>
                               </div>
@@ -28,7 +28,7 @@ function Home(){
                               <div className="dashboard-box">
                                    <Link to="/videos">
                                    <div className="dashboard-img-container">
-                                        <img src={videosImg} className="dashboard-img" />
+                                        <img src={videosImg} className="dashboard-img" loading="lazy" />
                                    </div>
                                    </Link>
                               </div>
@@ -39,7 +39,7 @@ function Home(){
                               <div className="dashboard-box">
                                    <Link to="/">
                                    <div className="dashboard-img-container">
-                                        <img src={settingsImg} className="dashboard-img" />
+                                        <img src={settingsImg} className="dashboard-img" loading="lazy" />
                                    </div>
                                    </Link>
                               </div>
