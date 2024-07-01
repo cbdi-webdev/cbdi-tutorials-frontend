@@ -152,6 +152,12 @@
      font-weight: 500;
 }
 
+.side-item:hover{
+     color: #519680;
+     transition: all 0.1s ease-out;
+     cursor: pointer;
+}
+
 @media(max-width: 1300px){
      .side-panel{
           position: static;

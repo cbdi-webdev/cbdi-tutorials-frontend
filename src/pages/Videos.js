@@ -43,13 +43,15 @@ function Videos(){
 
      // Handle Next and Previous Page Clicks
 
-     const handleNextPage = () => {
+     const handleNextPage = (e) => {
+          e.preventDefault();
           if(currentPage < Math.ceil(videos.length / videosPerPage)){
                setCurrentPage(currentPage + 1);
           }
      }
      
-     const handlePreviousPage = () => {
+     const handlePreviousPage = (e) => {
+          e.preventDefault();
           if(currentPage > 1) {
                setCurrentPage(currentPage - 1);
           }
@@ -70,7 +72,15 @@ function Videos(){
                <div className="side-panel">
                     <h5>Video Playlist ({currentPage}/{videos.length})</h5>
                     <ul className="side-list">
-                         {videos.map(video => <li key={video._id} className={ video.title == currentVideos[0].title ? "side-item active" : "side-item" }>{video.title}</li>)}
+                    {videos.map((video, index) => (
+                    <li
+                    key={video._id}
+                    className={video.title === currentVideos[0].title ? "side-item active" : "side-item"}
+                    onClick={()=> paginate(index + 1)}
+                    >
+                    {video.title}
+                    </li>
+                    ))}
                     </ul>
                </div>
           </div>

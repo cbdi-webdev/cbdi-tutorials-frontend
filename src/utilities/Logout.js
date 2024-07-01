@@ -11,16 +11,21 @@ function Logout(){
      const { unsetUser, setUser } = useContext(UserContext);
      const { notifylogout } = useContext(AlertContext);
 
-     unsetUser();
+     
 
      useEffect(() => {
+          unsetUser();
+
           setUser({
                id: null,
                isAdmin: null
           });
-     });
 
-     notifylogout("Logged out successfully");
+          notifylogout("Logged out successfully");
+          
+     },[]);
+
+     
 
      return(
           
