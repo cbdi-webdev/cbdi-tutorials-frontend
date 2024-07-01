@@ -10,7 +10,7 @@ function Home(){
      return(
           <div className="home-container">
                <div className="home-dashboard">
-                    <h1>CBDI Video Tutorials for Buyers</h1>
+                    <h1>CBDI Orientation Videos for Homebuyers</h1>
                     <div className="dashboard-list">
 
                          <div className="dashboard-item">
