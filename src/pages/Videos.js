@@ -68,21 +68,27 @@ function Videos(){
                handleNextPage={handleNextPage}
                handlePreviousPage={handlePreviousPage}
                currentPage={currentPage}
+               isLoading={isLoading}
                />
-               <div className="side-panel">
-                    <h5>Video Playlist ({currentPage}/{videos.length})</h5>
-                    <ul className="side-list">
-                    {videos.map((video, index) => (
-                    <li
-                    key={video._id}
-                    className={video.title === currentVideos[0].title ? "side-item active" : "side-item"}
-                    onClick={()=> paginate(index + 1)}
-                    >
-                    {video.title}
-                    </li>
-                    ))}
-                    </ul>
-               </div>
+               {
+                    !isLoading &&
+
+                    <div className="side-panel">
+                         <h5>Video Playlist ({currentPage}/{videos.length})</h5>
+                         <ul className="side-list">
+                              {videos.map((video, index) => (
+                              <li
+                              key={video._id}
+                              className={video.title === currentVideos[0].title ? "side-item active" : "side-item"}
+                              onClick={()=> paginate(index + 1)}
+                              >
+                              {video.title}
+                              </li>
+                              ))}
+                         </ul>
+                    </div>
+               }
+               
           </div>
      );
 }

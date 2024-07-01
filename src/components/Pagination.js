@@ -8,7 +8,8 @@ function Pagination({
      paginate,
      handleNextPage,
      handlePreviousPage,
-     currentPage
+     currentPage,
+     isLoading
 }){
 
      const pageNumbers = [];
@@ -19,7 +20,10 @@ function Pagination({
 
      return(
           <div>
-               <ul className="pagination">
+               {
+                    !isLoading &&
+
+                    <ul className="pagination">
                     <li className="page-item-prevnext">
                          <a 
                          href="#"
@@ -48,6 +52,9 @@ function Pagination({
                          </a>
                     </li>
                </ul>
+               
+               }
+               
           </div>
      );
 }
