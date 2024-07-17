@@ -65,7 +65,7 @@ function Navbar(){
                          <ul>
                               <li onClick={handleToggleMenu}><Link to="/" className="nav-link">Home</Link></li>
                               <li onClick={handleToggleMenu}><Link to="/videos" className="nav-link">Videos</Link></li>
-                              <li>About</li>
+                              <li onClick={handleToggleMenu}><Link to="/admin" className="nav-link">Admin</Link></li>
                          </ul>
                     </div>
 

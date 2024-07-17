@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap');
 
 *{
      margin: 0;
@@ -7,15 +8,15 @@
 }
 
 #root{
-     font-family: "Noto Sans", sans-serif;;
+     font-family: "Noto Sans", sans-serif;
 }
 
 input{
-     font-family: "Noto Sans", sans-serif;;
+     font-family: "Noto Sans", sans-serif;
 }
 
 button{
-     font-family: "Noto Sans", sans-serif;;
+     font-family: "Noto Sans", sans-serif;
 }
 
 input:focus, input:active{

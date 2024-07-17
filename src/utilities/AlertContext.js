@@ -64,6 +64,7 @@ export function AlertProvider({children}){
           )
      }
 
+
      return(
           <AlertContext.Provider value={{notifyerror, notifysuccess, notifyregister, notifylogout}}>
                {children}

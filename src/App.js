@@ -1,6 +1,9 @@
 import Home from './pages/Home.js';
 import Register from './pages/Register.js';
 import Login from './pages/Login.js';
+import Profile from './pages/Profile.js';
+import Admin from './pages/Admin.js';
+import AdminViewUsers from './pages/AdminViewUsers.js';
 import {Routes, Route} from 'react-router-dom';
 import Navbar from './components/Navbar.js';
 import UserContext from './utilities/UserContext.js';
@@ -8,6 +11,7 @@ import { useState, useEffect } from 'react';
 import Logout from './utilities/Logout.js';
 import NonMemberRoutes from './utilities/NonMemberRoutes.js';
 import MemberRoutes from './utilities/MemberRoutes.js';
+import AdminRoutes from './utilities/AdminRoutes.js';
 import Videos from './pages/Videos.js';
 import { AlertProvider } from './utilities/AlertContext.js';
 import { ToastContainer } from 'react-toastify';
@@ -76,6 +80,7 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route element={<MemberRoutes />}>
                 <Route path="/videos" element={<Videos />} />
+                <Route path="/profile" element={<Profile />} />
             </Route>
             
             <Route element={<NonMemberRoutes />}>
@@ -84,6 +89,10 @@ function App() {
             </Route>
 
             <Route path="/logout" element={<Logout />} />
+            <Route element={<AdminRoutes />}>
+              <Route exact path="/admin" element={<Admin />} />
+              <Route path="/admin/users" element={<AdminViewUsers />} />
+            </Route>
         </Routes>
         <Footer />
         </AlertProvider>
