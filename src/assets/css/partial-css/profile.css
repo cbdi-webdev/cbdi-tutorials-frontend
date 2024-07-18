@@ -10,6 +10,18 @@
 
 }
 
+.profile-upflex{
+     display: flex;
+     align-items: center;
+     gap: 2rem;
+}
+
+.profile-upflex > a{
+     text-decoration: none;
+     color: rgb(51, 106, 224);
+     font-weight: bold;
+}
+
 .p-dashboard-field{
      display: block;
      background-color: #F3F3F3;
@@ -20,7 +32,6 @@
      font-size: 18px;
      padding: 0.15rem 0.25rem;
      padding-left: 0rem;
-     
 }
 
 .p-dashboard-item{

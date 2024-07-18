@@ -1,6 +1,6 @@
 import '../assets/css/partial-css/profile.css';
 import { useEffect, useState } from 'react';
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -39,7 +39,10 @@ function Profile(){
 
      return(
           <div className="profile-page">
-               <h2>My Account</h2>
+               <div className="profile-upflex">
+                    <h2>My Account</h2>
+                    <Link to="/"><span>BACK TO HOME &lt;&lt; </span></Link>
+               </div>
                <div className="profile-dashboard-container">
                     {/* <button>Edit</button> */}
                     <h2 className="p-dashboard-title">PERSONAL INFORMATION</h2>

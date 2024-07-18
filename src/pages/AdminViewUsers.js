@@ -40,7 +40,8 @@ function AdminViewUsers(){
                </div>
                <div className="admin-dashboard">
                     <div className="admin-card-container">
-                         { !isLoading ?
+                         {      
+                              !isLoading ?
 
                          
                               users.map(user => {
@@ -52,8 +53,6 @@ function AdminViewUsers(){
 
                               <Spinner />
                          }
-                         
-
                     </div>   
                </div>
           </div>
