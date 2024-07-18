@@ -31,7 +31,6 @@ function AdminViewUsers(){
 
      
 
-
      return(
           <div className="admin-view-users-page-container">
                <div className="admin-upflex">
@@ -40,6 +39,7 @@ function AdminViewUsers(){
                </div>
                <div className="admin-dashboard">
                     <div className="admin-card-container">
+
                          {      
                               !isLoading ?
 
@@ -50,9 +50,11 @@ function AdminViewUsers(){
                               })
 
                               :
-
-                              <Spinner />
+                              <div className="spinna-container">
+                                   <Spinner />
+                              </div>     
                          }
+                         
                     </div>   
                </div>
           </div>

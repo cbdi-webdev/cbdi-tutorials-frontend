@@ -36,7 +36,7 @@ function Profile(){
 
      }, []);
 
-
+     
      return(
           <div className="profile-page">
                <div className="profile-upflex">
