@@ -1,3 +1,4 @@
+import '../assets/css/partial-css/navbar.css';
 import { Link } from 'react-router-dom';
 import UserContext from '../utilities/UserContext.js';
 import { useContext, useState } from 'react';
