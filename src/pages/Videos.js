@@ -18,7 +18,6 @@ function Videos() {
         },
       });
       const data = await result.json();
-      console.log('status:', result.status, 'data:', data);
       setVideos(data);
       setIsLoading(false);
     };
