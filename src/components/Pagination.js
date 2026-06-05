@@ -25,7 +25,8 @@ function Pagination({
 
                     <ul className="pagination">
                     <li className="page-item-prevnext">
-                         <a 
+                         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                         <a
                          href="#"
                          onClick={handlePreviousPage}
                          className={`page-link ${currentPage === 1 ? 'disabled' : ''}`}
@@ -36,6 +37,7 @@ function Pagination({
                     {
                          pageNumbers.map(number => (
                               <li key={number} className="page-item">
+                                   {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                                    <a onClick={() => paginate(number)} href="#" className="page-link">
                                         {number}
                                    </a>
@@ -43,7 +45,8 @@ function Pagination({
                          ))
                     }
                     <li className="page-item-prevnext">
-                         <a 
+                         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                         <a
                          href="#"
                          onClick={handleNextPage}
                          className={`page-link ${currentPage === Math.ceil(totalVideos / videosPerPage) ? 'disabled' : ''}`}

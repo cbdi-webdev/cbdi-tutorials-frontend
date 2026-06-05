@@ -6,7 +6,7 @@ function Hero(){
      return(
           <div className="hero-container">
                <div className="herologo-img-container">
-                    <img src={logo} className="herologo-img-container" />
+                    <img src={logo} className="herologo-img-container" alt="" />
                </div>
                <div className="hero-gradient"></div>
           </div>

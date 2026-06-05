@@ -23,7 +23,7 @@ const VideosComponent = ({videos, isLoading}) => {
      const [played, setPlayed] = useState(0);
      const [seekValue, setSeekValue] = useState(0)
      const playerRef = useRef(null);
-     const [isSeeking, setIsSeeking] = useState(false);
+     const [, setIsSeeking] = useState(false);
      const controlsRef = useRef(null);
      const timeoutRef = useRef(null);
      const [isVisible, setIsVisible] = useState(true);
@@ -58,8 +58,9 @@ const VideosComponent = ({videos, isLoading}) => {
           return () => {
             if(document.querySelector('.video-wrapper')){
               document.querySelector('.video-wrapper').removeEventListener('mousemove', handleMouseMove);
-            } 
-          } 
+            }
+          }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
     
    
@@ -227,7 +228,7 @@ const VideosComponent = ({videos, isLoading}) => {
                                               :
                                               replayz
                                               
-                                              } className="playBtnMid" onClick={!isEnded ? handlePlayPause : handleStartReplay} />
+                                              } className="playBtnMid" onClick={!isEnded ? handlePlayPause : handleStartReplay} alt="" />
                                         </div>
                                         <div className="controls-bottom">
                                              <input type="range" 
@@ -248,9 +249,9 @@ const VideosComponent = ({videos, isLoading}) => {
                                                       (isPlaying ? pauseBtn : playBtn )
                                                     :
                                                        replayz
-                                                    } className="bottomBtns" onClick={!isEnded ? handlePlayPause : handleStartReplay} />
+                                                    } className="bottomBtns" onClick={!isEnded ? handlePlayPause : handleStartReplay} alt="" />
                                                   <div>
-                                                       <img src={volume === 0 ? mutez : soundz} className="bottomBtns" onClick={handleVolumeToggle} />
+                                                       <img src={volume === 0 ? mutez : soundz} className="bottomBtns" onClick={handleVolumeToggle} alt="" />
                                                        <input 
                                                        type="range" 
                                                        min={0} 
@@ -265,7 +266,7 @@ const VideosComponent = ({videos, isLoading}) => {
                                                             <span  className="time-duration-total">{formatDuration(duration)}</span>
                                                        </div>
                                                   </div> 
-                                                  <img src={isFullscreen ? exitfs : fullscreen} className="bottomBtns" onClick={handleFullscreen} />
+                                                  <img src={isFullscreen ? exitfs : fullscreen} className="bottomBtns" onClick={handleFullscreen} alt="" />
                                              </div>
                                         </div>
                                       </div>}

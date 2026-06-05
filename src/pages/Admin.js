@@ -14,7 +14,7 @@ function Admin(){
                          <Link to="/admin/users" className="admin-links">
                               <div className="admin-dashboard-item">
                                    <div className="admin-dashboard-item-img-container">
-                                        <img src={allusers} className="admin-dashboard-item-img" />
+                                        <img src={allusers} className="admin-dashboard-item-img" alt="" />
                                    </div>
                                    <span>view users</span>
                               </div>

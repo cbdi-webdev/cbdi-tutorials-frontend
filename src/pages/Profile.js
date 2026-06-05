@@ -9,9 +9,9 @@ function Profile(){
      const [ profile, setProfile ] = useState({});
 
      const getFinancingType = (feed) => {
-          if(feed == 'pagibigfinancing'){
+          if(feed === 'pagibigfinancing'){
                return "PagIBIG Financing"
-          }else if(feed == 'bankfinancing'){
+          }else if(feed === 'bankfinancing'){
                return "Bank Financing"
           }else{
                return "Inhouse Financing"

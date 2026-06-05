@@ -1,4 +1,3 @@
-import logo from '../assets/images/cbdilogo.png';
 import '../assets/css/partial-css/home.css';
 import accountImg from '../assets/images/account.png';
 import settingsImg from '../assets/images/settings.png';
@@ -32,7 +31,7 @@ function Home(){
                               <Link to="/profile">
                                    <div className="dashboard-box">
                                         <div className="dashboard-img-container">
-                                             <img src={accountImg} className="dashboard-img" loading="lazy" />
+                                             <img src={accountImg} className="dashboard-img" loading="lazy" alt="" />
                                         </div>
                                    </div>
                               </Link>
@@ -43,7 +42,7 @@ function Home(){
                               <Link to="/videos">
                                    <div className="dashboard-box">
                                         <div className="dashboard-img-container">
-                                             <img src={videosImg} className="dashboard-img" loading="lazy" />
+                                             <img src={videosImg} className="dashboard-img" loading="lazy" alt="" />
                                         </div>
                                    </div>
                               </Link>
@@ -54,7 +53,7 @@ function Home(){
                               <Link to="/admin">
                                    <div className="dashboard-box" onClick={handleCheckIsAdmin}>
                                         <div className="dashboard-img-container">
-                                             <img src={settingsImg} className="dashboard-img" loading="lazy" />
+                                             <img src={settingsImg} className="dashboard-img" loading="lazy" alt="" />
                                         </div>
                                    </div>
                               </Link>

@@ -1,13 +1,12 @@
 import UserContext from './UserContext.js';
 import AlertContext from './AlertContext.js';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 
 
 
 function Logout(){
 
-     const navigate = useNavigate();
      const { unsetUser, setUser } = useContext(UserContext);
      const { notifylogout } = useContext(AlertContext);
 
@@ -23,6 +22,7 @@ function Logout(){
 
           notifylogout("Logged out successfully");
           
+     // eslint-disable-next-line react-hooks/exhaustive-deps
      },[]);
 
      

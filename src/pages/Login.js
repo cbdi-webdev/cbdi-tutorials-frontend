@@ -1,6 +1,6 @@
 import '../assets/css/partial-css/login.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useContext } from 'react';
 import UserContext from '../utilities/UserContext.js';
 import AlertContext from '../utilities/AlertContext.js';
 
@@ -10,7 +10,7 @@ function Login(){
      const [email, setEmail] = useState("");
      const [password, setPassword] = useState("");
      const navigate = useNavigate();
-     const { user, setUser } = useContext(UserContext);
+     const { setUser } = useContext(UserContext);
      const { notifyerror, notifysuccess } = useContext(AlertContext);
 
      async function loginUser(e){
