@@ -4,6 +4,8 @@ import Login from './pages/Login.js';
 import Profile from './pages/Profile.js';
 import Admin from './pages/Admin.js';
 import AdminViewUsers from './pages/AdminViewUsers.js';
+import AdminManageVideos from './pages/AdminManageVideos.js';
+import AdminManageSteps from './pages/AdminManageSteps.js';
 import {Routes, Route} from 'react-router-dom';
 import Navbar from './components/Navbar.js';
 import UserContext from './utilities/UserContext.js';
@@ -92,6 +94,8 @@ function App() {
             <Route element={<AdminRoutes />}>
               <Route exact path="/admin" element={<Admin />} />
               <Route path="/admin/users" element={<AdminViewUsers />} />
+              <Route path="/admin/videos" element={<AdminManageVideos />} />
+              <Route path="/admin/steps" element={<AdminManageSteps />} />
             </Route>
         </Routes>
         <Footer />

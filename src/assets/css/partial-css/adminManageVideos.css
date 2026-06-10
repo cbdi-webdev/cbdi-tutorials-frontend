@@ -1,0 +1,104 @@
+.admin-manage-videos-container {
+     font-family: "Inika", serif;
+     max-width: 1400px;
+     margin: auto;
+     min-height: 860px;
+}
+
+.section-heading {
+     color: #3F3F3F;
+     font-weight: 400;
+     font-size: 1.2rem;
+     margin-bottom: 1rem;
+     border-bottom: 1px solid #B6B6B6;
+     padding-bottom: 0.5rem;
+}
+
+.video-upload-section {
+     margin-bottom: 2.5rem;
+}
+
+.video-upload-form {
+     display: flex;
+     flex-direction: column;
+     gap: 1rem;
+     max-width: 480px;
+}
+
+.upload-field {
+     display: flex;
+     flex-direction: column;
+     gap: 0.3rem;
+}
+
+.upload-field > label {
+     color: #3F3F3F;
+     font-size: 0.9rem;
+     font-weight: 500;
+}
+
+.upload-input {
+     background-color: #f5f5f5;
+     border: 1px solid #B6B6B6;
+     border-radius: 4px;
+     font-family: "Inika", serif;
+     font-size: 0.9rem;
+     padding: 0.4rem 0.6rem;
+     color: #3F3F3F;
+}
+
+.upload-input:focus {
+     outline: none;
+     border-color: #336ae0;
+}
+
+.upload-file-input {
+     padding: 0.3rem;
+}
+
+.upload-hint {
+     color: #888;
+     font-size: 0.75rem;
+}
+
+.upload-submit-btn {
+     background-color: #336ae0;
+     border: none;
+     border-radius: 4px;
+     color: #fff;
+     cursor: pointer;
+     font-family: "Inika", serif;
+     font-size: 0.9rem;
+     padding: 0.5rem 1.2rem;
+     align-self: flex-start;
+}
+
+.upload-submit-btn:hover:not(:disabled) {
+     background-color: #2558c4;
+}
+
+.upload-submit-btn:disabled {
+     background-color: #555;
+     cursor: not-allowed;
+}
+
+.video-list-section {
+     margin-top: 1rem;
+}
+
+.admin-video-list {
+     display: flex;
+     flex-direction: column;
+     gap: 0.75rem;
+}
+
+.no-videos-msg {
+     color: #888;
+     font-style: italic;
+}
+
+@media (max-width: 600px) {
+     .video-upload-form {
+          max-width: 100%;
+     }
+}

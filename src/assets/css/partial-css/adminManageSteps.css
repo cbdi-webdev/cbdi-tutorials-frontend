@@ -1,0 +1,135 @@
+.admin-manage-steps-container {
+     font-family: "Inika", serif;
+     max-width: 1400px;
+     margin: auto;
+     min-height: 860px;
+}
+
+.step-create-section {
+     margin-bottom: 2.5rem;
+}
+
+.step-create-form {
+     display: flex;
+     flex-direction: column;
+     gap: 1rem;
+}
+
+.step-form-row {
+     display: flex;
+     gap: 1rem;
+     flex-wrap: wrap;
+     align-items: flex-end;
+}
+
+.step-form-field {
+     display: flex;
+     flex-direction: column;
+     gap: 0.3rem;
+     flex: 1;
+     min-width: 160px;
+}
+
+.step-form-field--sm {
+     flex: 0 0 90px;
+     min-width: 90px;
+}
+
+.step-form-field > label {
+     color: #3F3F3F;
+     font-size: 0.9rem;
+     font-weight: 500;
+}
+
+.step-form-input {
+     background-color: #f5f5f5;
+     border: 1px solid #B6B6B6;
+     border-radius: 4px;
+     font-family: "Inika", serif;
+     font-size: 0.9rem;
+     padding: 0.4rem 0.6rem;
+     color: #3F3F3F;
+}
+
+.step-form-input:focus {
+     outline: none;
+     border-color: #336ae0;
+}
+
+.step-form-select {
+     background-color: #f5f5f5;
+     border: 1px solid #B6B6B6;
+     border-radius: 4px;
+     color: #3F3F3F;
+     cursor: pointer;
+     font-family: "Inika", serif;
+     font-size: 0.9rem;
+     padding: 0.4rem 0.6rem;
+}
+
+.step-form-select:focus {
+     outline: none;
+     border-color: #336ae0;
+}
+
+.step-create-btn {
+     background-color: #336ae0;
+     border: none;
+     border-radius: 4px;
+     color: #fff;
+     cursor: pointer;
+     font-family: "Inika", serif;
+     font-size: 0.9rem;
+     padding: 0.5rem 1.2rem;
+     align-self: flex-start;
+}
+
+.step-create-btn:hover:not(:disabled) {
+     background-color: #2558c4;
+}
+
+.step-create-btn:disabled {
+     background-color: #555;
+     cursor: not-allowed;
+}
+
+.step-list-section {
+     margin-top: 1rem;
+}
+
+.step-list-header {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     flex-wrap: wrap;
+     gap: 1rem;
+     margin-bottom: 1rem;
+}
+
+.step-list-header .section-heading {
+     margin-bottom: 0;
+     border-bottom: none;
+     padding-bottom: 0;
+}
+
+.step-filter {
+     display: flex;
+     align-items: center;
+     gap: 0.5rem;
+}
+
+.step-filter > label {
+     color: #3F3F3F;
+     font-size: 0.9rem;
+}
+
+.admin-step-list {
+     display: flex;
+     flex-direction: column;
+     gap: 1rem;
+}
+
+.no-steps-msg {
+     color: #888;
+     font-style: italic;
+}

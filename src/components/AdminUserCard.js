@@ -1,11 +1,41 @@
+import { useState, useContext } from 'react';
+import AlertContext from '../utilities/AlertContext.js';
+import '../assets/css/partial-css/adminUserCard.css';
 
+function AdminUserCard({ user }) {
+     const [financingType, setFinancingType] = useState(user.financingType || '');
+     const [isSaving, setIsSaving] = useState(false);
+     const { notifysuccess, notifyerror } = useContext(AlertContext);
 
+     const saveFinancingType = async () => {
+          setIsSaving(true);
+          try {
+               const response = await fetch(
+                    `${process.env.REACT_APP_API_URL}/users/${user._id}/financing-type`,
+                    {
+                         method: 'PATCH',
+                         headers: {
+                              Authorization: `Bearer ${localStorage.getItem('token')}`,
+                              'Content-Type': 'application/json',
+                         },
+                         body: JSON.stringify({ financingType }),
+                    }
+               );
 
+               if (response.ok) {
+                    notifysuccess('Financing type updated successfully.');
+               } else {
+                    const message = await response.json();
+                    notifyerror(message || 'Failed to update financing type.');
+               }
+          } catch {
+               notifyerror('An unexpected error occurred.');
+          } finally {
+               setIsSaving(false);
+          }
+     };
 
-
-function AdminUserCard({user}){
-
-     return(
+     return (
           <div className="admin-user-card">
                <div className="label-list">
                     <div className="label-leftpanel">
@@ -31,7 +61,7 @@ function AdminUserCard({user}){
                          </div>
                          <div className="label-item">
                               <label htmlFor="">isAdmin:</label>
-                              <p className="booltxt" >{user.isAdmin.toString()}</p>
+                              <p className="booltxt">{user.isAdmin.toString()}</p>
                          </div>
                     </div>
                     <div className="label-rightpanel">
@@ -45,10 +75,26 @@ function AdminUserCard({user}){
                          </div>
                          <div className="label-item">
                               <label htmlFor="">financingType:</label>
-                              <p>'{user.financingType}'</p>
+                              <div className="financing-type-edit">
+                                   <select
+                                        value={financingType}
+                                        onChange={(e) => setFinancingType(e.target.value)}
+                                        className="financing-type-input"
+                                   >
+                                        <option value="pagibigfinancing">pagibigfinancing</option>
+                                        <option value="bankfinancing">bankfinancing</option>
+                                        <option value="inhousefinancing">inhousefinancing</option>
+                                   </select>
+                                   <button
+                                        onClick={saveFinancingType}
+                                        disabled={isSaving}
+                                        className="financing-type-save-btn"
+                                   >
+                                        {isSaving ? 'Saving...' : 'Save'}
+                                   </button>
+                              </div>
                          </div>
                     </div>
-                    
                </div>
           </div>
      );
